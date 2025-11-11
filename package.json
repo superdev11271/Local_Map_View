@@ -1,0 +1,26 @@
+{
+  "name": "map_distance",
+  "version": "1.0.0",
+  "description": "Demo Electron application",
+  "main": "main.js",
+  "scripts": {
+    "dev": "concurrently -k \"npm:tileserver\" \"electronmon --trace-warnings .\"",
+    "start": "electron .",
+    "web": "concurrently -k \"npm:tileserver\" \"npx serve .\"",
+    "tileserver": "node tileserver.js",
+    "download-tiles": "node scripts/download-tiles.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "electron": "^39.1.2",
+    "electronmon": "^2.0.4"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "leaflet": "^1.9.4"
+  }
+}

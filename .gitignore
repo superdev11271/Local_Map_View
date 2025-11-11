@@ -1,0 +1,6 @@
+node_modules/
+tiles/
+.env
+.env.local
+*.log
+

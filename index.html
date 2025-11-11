@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electron Demo</title>
+    <link rel="stylesheet" href="./node_modules/leaflet/dist/leaflet.css" />
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Inter', system-ui, sans-serif;
+        color: #0f172a;
+        background-color: #f8fafc;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        padding: clamp(0.75rem, 2vw, 1.5rem);
+      }
+
+      #map {
+        position: relative;
+        flex: 1;
+        width: 100%;
+        min-height: 0;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 14px 44px rgba(15, 23, 42, 0.18);
+      }
+
+      .trajectory-control {
+        padding: 0.75rem 1rem;
+        border-radius: 0.85rem;
+        background: rgba(15, 23, 42, 0.88);
+        color: #f8fafc;
+        font-size: 0.9rem;
+        line-height: 1.45;
+        box-shadow:
+          0 18px 30px rgba(15, 23, 42, 0.28),
+          0 6px 12px rgba(15, 23, 42, 0.24);
+        min-width: 220px;
+      }
+
+      .trajectory-control strong {
+        font-size: 1rem;
+      }
+
+      .trajectory-control .distance {
+        font-size: 1.15rem;
+        font-weight: 600;
+      }
+
+      .trajectory-control small {
+        display: block;
+        opacity: 0.75;
+        margin-top: 0.35rem;
+      }
+
+      .trajectory-control button {
+        margin-top: 0.75rem;
+        width: 100%;
+        padding: 0.55rem 0.85rem;
+        border-radius: 0.65rem;
+        border: none;
+        background: #ef4444;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.2s ease;
+      }
+
+      .trajectory-control button:hover {
+        background: #dc2626;
+        transform: translateY(-1px);
+      }
+
+      .empty-state {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-content: center;
+        gap: 0.75rem;
+        text-align: center;
+        padding: 2rem;
+        background: linear-gradient(
+          135deg,
+          rgba(14, 165, 233, 0.08),
+          rgba(59, 130, 246, 0.08)
+        );
+        backdrop-filter: blur(6px);
+        z-index: 10;
+      }
+
+      .empty-state strong {
+        font-size: clamp(1.25rem, 3vw, 1.5rem);
+      }
+
+    </style>
+  </head>
+  <body>
+    <main>
+      <div id="map" role="application" aria-label="Google Map display">
+        <div class="empty-state" id="map-empty-state">
+          <strong>Loading tiles…</strong>
+          <span>Start your local tile server and set the <code>TILE_SERVER_URL</code> environment variable before launching the app.</span>
+        </div>
+      </div>
+    </main>
+    <script defer src="./node_modules/leaflet/dist/leaflet.js"></script>
+    <script src="./renderer.js"></script>
+  </body>
+</html>
+
