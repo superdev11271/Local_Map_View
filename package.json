@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently -k \"npm:tileserver\" \"electronmon --trace-warnings .\"",
     "start": "electron .",
-    "web": "concurrently -k \"npm:tileserver\" \"npx serve .\"",
+    "web": "concurrently -k \"npm:tileserver\" \"node scripts/web-server.js\"",
     "tileserver": "node tileserver.js",
     "download-tiles": "node scripts/download-tiles.js"
   },

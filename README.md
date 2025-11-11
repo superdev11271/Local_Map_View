@@ -80,6 +80,18 @@ npm run dev
 
 `npm run dev` uses `electronmon` under the hood—when you edit renderer, preload, or main-process files it restarts Electron automatically. `concurrently` keeps the tile server running alongside it (killing both on exit).
 
+## Run in a browser
+
+Serve the app over HTTP (with `.env` settings applied) alongside the tile server:
+
+```bash
+npm run web
+```
+
+- The command runs both `npm run tileserver` and a lightweight Express web server.
+- The web server reads `.env`, injects the config into `window.appConfig`, and hosts `index.html` at `http://WEB_HOST:WEB_PORT` (defaults `0.0.0.0:3000`).
+- Visit `http://localhost:3000` (or the host/port you configure) in any browser; the renderer picks up the same tile URL and map coordinates defined in `.env`.
+
 ## Launch the Electron app
 
 ```bash
